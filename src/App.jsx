@@ -1,7 +1,11 @@
+import { Header } from "./components/Header"
+
 const App = () => {
   return (
-    <div className="min-h-screen">
-      <h4 className="text-3xl">Hello Truffle and Tailwind</h4>
+    <div className="min-h-screen bg-black">
+      <div className="gradient-bg-hero">
+      <Header/>
+      </div>
     </div>
   )
 }
