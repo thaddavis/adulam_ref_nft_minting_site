@@ -1,13 +1,34 @@
-import { Header } from "./components/Header"
+import { useEffect } from "react";
+import { useGlobalState } from "./store";
+import { isWallectConnected, loadNfts } from "./Adulam";
+
+import { Artworks } from "./components/Artworks";
+import { Header } from "./components/Header";
+import Hero from "./components/Hero";
+import { Footer } from "./components/Footer";
+import { Alert } from "./components/Alert";
+import { Loading } from "./components/Loading";
 
 const App = () => {
-  return (
-    <div className="min-h-screen bg-black">
-      <div className="gradient-bg-hero">
-      <Header/>
-      </div>
-    </div>
-  )
-}
+  const [nfts] = useGlobalState("nfts");
 
-export default App
+  useEffect(async () => {
+    await isWallectConnected().then(() => console.log("Blockchain Loaded"));
+    await loadNfts();
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-white">
+      <div className="gradient-bg-hero">
+        <Header />
+        <Hero />
+      </div>
+      <Artworks artworks={nfts} />
+      <Footer/>
+      <Alert/>
+      <Loading/>
+    </div>
+  );
+};
+
+export default App;

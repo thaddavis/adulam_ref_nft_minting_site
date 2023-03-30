@@ -30,3 +30,6 @@ $ yarn hardhat node
 `$ yarn start`
 Visit this URL in your browser: http://localhost:3000
 
+## References
+
+https://www.youtube.com/watch?v=QN3wb_mXBjY
